@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SmartCLG for MGM's College of Engineering & Technology, Kamothe — manage campus events, registrations, venues, announcements, and student participation.">
+  <meta name="theme-color" content="#7a1530">
+  <title>SmartCLG — MGMCET Kamothe Event Management</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%236c5ce7'/%3E%3Cpath d='M17 20h30v9H17zm0 15h20v9H17z' fill='white'/%3E%3Ccircle cx='44' cy='39.5' r='5' fill='%23b8f2e6'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Primary navigation">
+      <div class="sidebar-header">
+        <a class="brand" href="#home" aria-label="SmartCLG MGMCET home">
+          <span class="brand-logo-frame"><img src="assets/mgmcet-emblem.png" alt="MGMCET emblem"></span>
+          <span class="brand-name">Smart<span>CLG</span><small>MGMCET</small></span>
+        </a>
+        <button class="icon-button sidebar-close" id="sidebarClose" type="button" aria-label="Close navigation">
+          <span data-icon="close"></span>
+        </button>
+      </div>
+
+      <div class="campus-switcher">
+        <span class="campus-avatar">MGM</span>
+        <span class="campus-copy">
+          <strong>MGM's College of Engineering &amp; Technology</strong>
+          <small id="campusContext">Admin event workspace</small>
+        </span>
+        <span class="status-dot" title="Workspace active"></span>
+      </div>
+
+      <nav class="nav-list" id="dynamicNavigation" aria-label="Workspace navigation">
+        <p class="nav-label">Admin workspace</p>
+        <a class="nav-item active" href="#dashboard" data-view="dashboard">
+          <span data-icon="grid"></span>
+          <span>Admin overview</span>
+        </a>
+        <a class="nav-item" href="#events" data-view="events">
+          <span data-icon="calendar"></span>
+          <span>Manage events</span>
+        </a>
+        <a class="nav-item" href="#registrations" data-view="registrations">
+          <span data-icon="users"></span>
+          <span>Registrations</span>
+        </a>
+        <a class="nav-item" href="#calendar" data-view="calendar">
+          <span data-icon="calendar-days"></span>
+          <span>Event calendar</span>
+        </a>
+        <a class="nav-item" href="#analytics" data-view="analytics">
+          <span data-icon="chart"></span>
+          <span>Insights</span>
+        </a>
+        <a class="nav-item" href="#announcements" data-view="announcements">
+          <span data-icon="megaphone"></span>
+          <span>Announcements</span>
+        </a>
+
+        <p class="nav-label nav-label-spaced">College</p>
+        <a class="nav-item" href="#profile" data-view="profile">
+          <span data-icon="book"></span>
+          <span>College profile</span>
+        </a>
+        <a class="nav-item" href="#venues" data-view="venues">
+          <span data-icon="map-pin"></span>
+          <span>Event venues</span>
+        </a>
+        <a class="nav-item" href="#contact" data-view="contact">
+          <span data-icon="phone"></span>
+          <span>Contact</span>
+        </a>
+        <a class="nav-item" href="#settings" data-view="settings">
+          <span data-icon="settings"></span>
+          <span>Settings</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="upgrade-card">
+          <span class="upgrade-icon" data-icon="sparkles"></span>
+          <strong>Make every event count</strong>
+          <p>Smart planning, zero spreadsheets.</p>
+          <button type="button" class="text-button" data-action="learn-more">Explore features <span>→</span></button>
+        </div>
+        <div class="sidebar-profile">
+          <span class="avatar avatar-purple" id="sidebarAvatar">EA</span>
+          <span class="profile-copy">
+            <strong id="sidebarProfileName">Event Administrator</strong>
+            <small id="sidebarProfileRole">MGMCET Administration</small>
+          </span>
+          <button class="icon-button subtle" type="button" data-action="switch-role" aria-label="Switch portal">
+            <span data-icon="more"></span>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <div class="sidebar-scrim" id="sidebarScrim"></div>
+
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="icon-button menu-button" id="menuButton" type="button" aria-label="Open navigation">
+            <span data-icon="menu"></span>
+          </button>
+          <div class="mobile-brand">
+            <img class="mobile-mgm-logo" src="assets/mgmcet-emblem.png" alt="MGMCET emblem">
+            <strong>SmartCLG</strong>
+          </div>
+          <label class="global-search" for="globalSearch">
+            <span data-icon="search"></span>
+            <input id="globalSearch" type="search" autocomplete="off" placeholder="Search events, venues or attendees...">
+            <kbd>/</kbd>
+          </label>
+        </div>
+        <div class="topbar-actions">
+          <button class="role-switcher" id="roleSwitcher" type="button" data-action="switch-role" aria-label="Switch between admin and student portals">
+            <span class="role-switcher-icon" data-icon="shield"></span>
+            <span><small>Current portal</small><strong id="roleLabel">Admin</strong></span>
+            <span data-icon="chevron-right"></span>
+          </button>
+          <span class="today-label" id="todayLabel"></span>
+          <button class="icon-button notification-button" id="notificationButton" type="button" aria-label="Open notifications" aria-expanded="false">
+            <span data-icon="bell"></span>
+            <span class="notification-dot" id="notificationDot"></span>
+          </button>
+          <button class="icon-button" id="themeButton" type="button" aria-label="Toggle color theme">
+            <span data-icon="moon"></span>
+          </button>
+          <span class="avatar avatar-purple top-avatar" id="topAvatar" title="Event Administrator">EA</span>
+        </div>
+      </header>
+
+      <main class="main-content" id="mainContent" tabindex="-1"></main>
+
+      <footer class="app-footer">
+        <span>© <span id="footerYear"></span> SmartCLG for MGMCET</span>
+        <span class="footer-separator">•</span>
+        <span>College details verified from the official institute website</span>
+      </footer>
+    </div>
+  </div>
+
+  <div class="modal-layer" id="modalRoot" hidden></div>
+  <div class="drawer-layer" id="drawerRoot" hidden></div>
+  <div class="toast-region" id="toastRegion" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
