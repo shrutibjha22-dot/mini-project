@@ -1,9 +1,8 @@
-const db = firebase.firestore();
-
 (() => {
   "use strict";
-
   const STORAGE_KEYS = {
+
+
     events: "smartclg.mgmcet.events.v3",
     registrations: "smartclg.mgmcet.registrations.v2",
     announcements: "smartclg.mgmcet.announcements.v2",
