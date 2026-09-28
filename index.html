@@ -150,21 +150,27 @@
 <script src="https://gstatic.com"></script>
 <script src="https://gstatic.com"></script>
 
-<script>
-  const firebaseConfig = {
-    apiKey: "AIzaSyDhGflH41b3T4rfjIihnLSudqujc5Gfl4I",
-    authDomain: "smart-clg-event.firebaseapp.com",
-    projectId: "smart-clg-event",
-    storageBucket: "smart-clg-event.firebasestorage.app",
-    messagingSenderId: "1069940876581",
-    appId: "1:1069940876581:web:a29d78e713237a523466cc",
-    measurementId: "G-F83J5D0KXQ"
-  };
+<!-- Final Backend Setup -->
+<script src="https://gstatic.com"></script>
+<script src="https://gstatic.com"></script>
 
-  firebase.initializeApp(firebaseConfig);
-  const db = firebase.firestore();
+<script>
+  try {
+    const firebaseConfig = {
+      apiKey: "AIzaSyDhGflH41b3T4rfjIihnLSudqujc5Gfl4I",
+      authDomain: "://firebaseapp.com",
+      projectId: "smart-clg-event",
+      storageBucket: "smart-clg-event.firebasestorage.app",
+      messagingSenderId: "1069940876581",
+      appId: "1:1069940876581:web:a29d78e713237a523466cc",
+      measurementId: "G-F83J5D0KXQ"
+    };
+    firebase.initializeApp(firebaseConfig);
+    window.db = firebase.firestore();
+  } catch (error) {
+    console.error(error);
+  }
 </script>
-<!-- Firebase Setup Ended -->
   <script src="app.js" defer></script>
 </body>
 </html>
